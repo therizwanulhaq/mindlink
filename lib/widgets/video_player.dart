@@ -21,6 +21,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     _controller = VideoPlayerController.networkUrl(Uri.parse(widget.url))
       ..initialize().then((_) {
         setState(() {});
+        _controller.seekTo(Durations.extralong3);
         _controller.pause();
       });
   }
@@ -36,12 +37,20 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.topRight,
         children: [
           Container(
             color: Colors.black,
             child: _controller.value.isInitialized
-                ? VideoPlayer(_controller)
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _controller.value.isPlaying
+                            ? _controller.pause()
+                            : _controller.play();
+                      });
+                    },
+                    child: VideoPlayer(_controller))
                 : const Center(
                     child: CircularProgressIndicator(
                       color: Colors.white,
@@ -51,17 +60,11 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
 
           // Play/Pause button in the center of the video
           if (_controller.value.isInitialized)
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  _controller.value.isPlaying
-                      ? _controller.pause()
-                      : _controller.play();
-                });
-              },
+            Padding(
+              padding: const EdgeInsets.only(top: 5, right: 5),
               child: Icon(
                 _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-                size: 80.0,
+                size: 30.0,
                 color: Colors.white.withOpacity(0.7),
               ),
             ),
