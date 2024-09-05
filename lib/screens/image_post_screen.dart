@@ -68,13 +68,35 @@ class ImagePostScreen extends StatelessWidget {
                 SizedBox(width: 10),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
-              child: Text(
-                "Liked by pink_guy, joji and 528,331 others",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 10, bottom: 3),
+              child: RichText(
+                  text: const TextSpan(
+                      style: TextStyle(color: Colors.black),
+                      children: [
+                    TextSpan(text: "Liked by "),
+                    TextSpan(
+                        text: "pink_guy ",
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(text: "and "),
+                    TextSpan(
+                        text: "324,443 others",
+                        style: TextStyle(fontWeight: FontWeight.bold))
+                  ])),
             ),
+
+            Row(
+              children: [
+                const SizedBox(width: 10),
+                Text(
+                  imagePosts[index].username,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(width: 5),
+                Text(imagePosts[index].content),
+              ],
+            ),
+            const SizedBox(height: 10),
           ],
         );
       },
