@@ -23,9 +23,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         setState(() {});
         _controller.pause();
       });
-    // .catchError((error) {
-    //   print('Error initializing video player: $error');
-    // });
   }
 
   @override
@@ -68,15 +65,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                 color: Colors.white.withOpacity(0.7),
               ),
             ),
-
-          // Progress indicator at the bottom
-          // if (_controller.value.isInitialized)
-          //   Positioned(
-          //     bottom: 0,
-          //     left: 0,
-          //     right: 0,
-          //     child: VideoProgressIndicator(_controller, allowScrubbing: true),
-          //   ),
         ],
       ),
     );
