@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mindlink/data/posts.dart';
 import 'package:mindlink/models/post.dart';
+import 'package:mindlink/widgets/post_info.dart';
 import 'package:mindlink/widgets/video_player.dart';
 
 class VideoPostScreen extends StatelessWidget {
@@ -18,28 +19,10 @@ class VideoPostScreen extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-              leading: CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(videoPosts[index].avatar),
-                backgroundColor: Colors.grey[200],
-              ),
-              title: Text(
-                videoPosts[index].username,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.more_vert,
-                    size: 20,
-                  )),
-            ),
+            PostInfo(
+                avatar: videoPosts[index].avatar,
+                name: videoPosts[index].name,
+                username: videoPosts[index].username),
             VideoPlayerWidget(url: videoPosts[index].mediaUrl!),
             const SizedBox(height: 10),
             const Row(

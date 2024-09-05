@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mindlink/data/posts.dart';
 import 'package:mindlink/models/post.dart';
-import 'package:transparent_image/transparent_image.dart'; // Import for transparent image
+import 'package:mindlink/widgets/post_info.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ImagePostScreen extends StatelessWidget {
   const ImagePostScreen({super.key});
@@ -18,43 +19,17 @@ class ImagePostScreen extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListTile(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-              leading: CircleAvatar(
-                radius: 20,
-                backgroundImage: NetworkImage(imagePosts[index].avatar),
-                backgroundColor: Colors.grey[200],
-              ),
-              title: Text(
-                imagePosts[index].username,
-                style: const TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.more_vert,
-                    size: 20,
-                  )),
-            ),
-
-            // FadeInImage with transparent placeholder
+            PostInfo(
+                avatar: imagePosts[index].avatar,
+                name: imagePosts[index].name,
+                username: imagePosts[index].username),
             FadeInImage.memoryNetwork(
-              placeholder:
-                  kTransparentImage, // Transparent image from the package
-              image: imagePosts[index].mediaUrl!, // Actual image URL from post
-              fit: BoxFit
-                  .contain, // Maintains aspect ratio and fits within the screen width
-              width: MediaQuery.of(context)
-                  .size
-                  .width, // Fit image to device width
+              placeholder: kTransparentImage,
+              image: imagePosts[index].mediaUrl!,
+              fit: BoxFit.contain,
+              width: MediaQuery.of(context).size.width,
             ),
-
             const SizedBox(height: 10),
-
             const Row(
               children: [
                 SizedBox(width: 10),
@@ -84,7 +59,6 @@ class ImagePostScreen extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold))
                   ])),
             ),
-
             Row(
               children: [
                 const SizedBox(width: 10),
