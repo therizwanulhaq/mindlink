@@ -32,7 +32,7 @@ final List<Post> posts = [
     content: 'This is interesting.',
     type: 'video',
     mediaUrl:
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
   ),
   Post(
     id: "5",
@@ -124,7 +124,7 @@ final List<Post> posts = [
     content: 'We Are Going On Bull run',
     type: 'video',
     mediaUrl:
-        'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+        'https://robohash.org/velvoluptatemsimilique.png?size=50x50&set=set1',
   ),
   Post(
     id: "16",
